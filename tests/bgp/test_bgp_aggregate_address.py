@@ -207,7 +207,7 @@ def _check_state_db_aggregate_removed(duthost, prefix):
 def _check_running_config_aggregate_removed(duthost, prefix):
     """Return True when the aggregate is gone from FRR running-config."""
     running_config = running_bgp_has_aggregate(duthost, prefix)
-    return prefix.split("/")[0] not in running_config
+    return not running_config.strip()
 
 
 def verify_bgp_aggregate_cleanup(duthost, prefix):
